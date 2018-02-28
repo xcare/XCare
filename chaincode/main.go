@@ -19,18 +19,10 @@ func (t *XChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	function, args := stub.GetFunctionAndParameters()
 	if function == "userApprove" { 
 		return t.userApprove(stub, args)
-	} else if function == "userBind" { 
-		return t.userBind(stub, args)
-	} else if function == "bidEnter" { 
-		return t.bidEnter(stub, args)
 	} else if function == "bid" { 
 		return t.bid(stub, args)
 	} else if function == "bidApprove" { 
 		//		return t.bid(stub, args)
-	} else if function == "queryUserByUuid" { 
-		return t.queryUserByUuid(stub, args)
-	} else if function == "queryBid" { 
-		return t.queryBid(stub, args)
 	} else if function == "queryBidsByTender" { 
 		return t.queryBidsByTender(stub, args)
 	}
@@ -39,7 +31,7 @@ func (t *XChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 }
 
 func main() {
-	err := shim.Start(new(DunChaincode))
+	err := shim.Start(new(XChaincode))
 	if err != nil {
 		fmt.Printf("Error starting Simple chaincode: %s", err)
 	}
